@@ -266,10 +266,11 @@
         <a class="btnn" href="#"><img src="assets/play.png">Контакты</a>
       </div>
       <form class="contact-form" action="#" method="post">
-        <input type="text" name="name" placeholder="Имя" required>
-        <input type="tel" name="phone" placeholder="Телефон" required>
+        <input class="name" type="text" name="name" placeholder="Имя" required>
+        <input class="phone" type="tel" name="phone" placeholder="Телефон" required>
         <textarea name="message" placeholder="Сообщение" rows="4"></textarea>
-        <button class="btn btn-primary" type="submit">Получить консультацию</button>
+        <input class="checkbox" type="checkbox" name="checkbox" placeholder="Я согласен (на) с политикой конфиденциальности"><p>Я согласен (на) с политикой конфиденциальности</p>
+        <button>Получить консультацию</button>
       </form>
     </div>
   </section>
@@ -299,7 +300,9 @@
     </div>
     <div class="footer-bottom">
       <div class="container">
-        <small>© 2025 ООО "ВапСтепГлобал" — Политика конфиденциальности</small>
+        <small>Политика конфиденциальности<br>
+          Политика обработки файлов cookie<br>
+        © 2025 ООО "ВапСтепГлобал" </small>
       </div>
     </div>
   </footer>
