@@ -254,15 +254,41 @@
 
   <!-- CERTIFICATES -->
   <section class="certificates">
-    <div class="container">
-      <h2 class="section-title">Сертификаты качества</h2>
-      <div class="cert-grid">
-        <div class="cert-card"><img src="assets/sert1.png" alt="cert1"></div>
-        <div class="cert-card"><img src="assets/sert2.png" alt="cert2"></div>
-        <div class="cert-card"><img src="assets/sert3.png" alt="cert3"></div>
-      </div>
+        <div class="container">
+        <h2>Сертификаты качества</h2>
+        
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <!-- Сертификаты как изображения -->
+                <div class="cert-card">
+                    <img src="assets/sert1.png" alt="Сертификат качества 1">
+                </div>
+                <div class="cert-card">
+                    <img src="assets/sert2.png" alt="Сертификат качества 2">
+                </div>
+                <div class="cert-card">
+                    <img src="assets/sert3.png" alt="Сертификат качества 3">
+                </div>
+                <div class="cert-card">
+                    <img src="assets/sert4.png" alt="Сертификат качества 4">
+                </div>
+                <div class="cert-card">
+                    <img src="assets/sert5.png" alt="Сертификат качества 5">
+                </div>
+                <div class="cert-card">
+                    <img src="assets/sert6.png" alt="Сертификат качества 6">
+                </div>
+            </div>
+            
+            <div class="carousel-nav">
+                <button class="carousel-btn prev-btn">←</button>
+                <button class="carousel-btn next-btn">→</button>
+            </div>
+        </div>
+        
+
     </div>
-  </section>
+    </section>
 
   <!-- CONTACT / CTA -->
   <section class="contact-cta">
@@ -279,8 +305,8 @@
       <form class="contact-form" action="#" method="post">
         <input class="name" type="text" name="name" placeholder="Имя" required>
         <input class="phone" type="tel" name="phone" placeholder="Телефон" required>
-        <textarea name="message" placeholder="Сообщение" rows="4"></textarea>
-        <input class="checkbox" type="checkbox" name="checkbox" placeholder="Я согласен (на) с политикой конфиденциальности"><p>Я согласен (на) с политикой конфиденциальности</p>
+        <textarea name="message" placeholder="Сообщение" rows="4"></textarea><br>
+        <input class="checkbox" type="checkbox" name="checkbox" placeholder="Я согласен">Я согласен (на) с политикой конфиденциальности
         <button>Получить консультацию</button>
       </form>
     </div>
@@ -317,6 +343,94 @@
       </div>
     </div>
   </footer>
+<script>
+       class CertificatesCarousel {
+            constructor() {
+                this.carousel = document.querySelector('.carousel-track');
+                this.cards = document.querySelectorAll('.cert-card');
+                this.prevBtn = document.querySelector('.prev-btn');
+                this.nextBtn = document.querySelector('.next-btn');
+                
+                this.currentIndex = 0;
+                this.cardsToShow = 3; // Всегда показываем 3 сертификата
+                this.totalCards = this.cards.length;
+                
+                this.init();
+            }
+            
+            init() {
+                // Навигация
+                this.prevBtn.addEventListener('click', () => this.prev());
+                this.nextBtn.addEventListener('click', () => this.next());
+                
+                // Автопрокрутка
+                this.startAutoPlay();
+                
+                // Пауза при наведении
+                this.carousel.addEventListener('mouseenter', () => this.stopAutoPlay());
+                this.carousel.addEventListener('mouseleave', () => this.startAutoPlay());
+                
+                // Обновляем состояние кнопок
+                this.updateButtons();
+            }
+            
+            updateCarousel() {
+                // Вычисляем смещение для показа трех сертификатов
+                const cardWidth = 100 / this.cardsToShow; // % ширины для каждого сертификата
+                const translateX = -this.currentIndex * cardWidth;
+                this.carousel.style.transform = `translateX(${translateX}%)`;
+                
+                this.updateButtons();
+            }
+            
+            next() {
+                // Переходим к следующему сертификату, но не дальше чем можно показать 3
+                if (this.currentIndex < this.totalCards - this.cardsToShow) {
+                    this.currentIndex++;
+                    this.updateCarousel();
+                }
+            }
+            
+            prev() {
+                if (this.currentIndex > 0) {
+                    this.currentIndex--;
+                    this.updateCarousel();
+                }
+            }
+            
+            updateButtons() {
+                // Отключаем кнопки когда достигнуты границы
+                this.prevBtn.disabled = this.currentIndex === 0;
+                this.nextBtn.disabled = this.currentIndex >= this.totalCards - this.cardsToShow;
+            }
+            
+            startAutoPlay() {
+                this.stopAutoPlay();
+                this.autoPlayInterval = setInterval(() => {
+                    if (this.currentIndex < this.totalCards - this.cardsToShow) {
+                        this.next();
+                    } else {
+                        // Возврат к началу
+                        this.currentIndex = 0;
+                        this.updateCarousel();
+                    }
+                }, 4000);
+            }
+            
+            stopAutoPlay() {
+                if (this.autoPlayInterval) {
+                    clearInterval(this.autoPlayInterval);
+                    this.autoPlayInterval = null;
+                }
+            }
+        }
+        
+        // Инициализация карусели после загрузки DOM
+        document.addEventListener('DOMContentLoaded', () => {
+          new CertificatesCarousel();
+        });
+            
+    </script>
 
 </body>
 </html>
