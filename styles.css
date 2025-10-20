@@ -797,9 +797,7 @@ border-radius: 12px;}
         
        footer{
 	display: flex;
-	justify-content: center;
-	background-repeat:
-}
+	justify-content: center;}
 .osn{
 	width: 1200px;
 	background: url(../assets/fon.jpg);
