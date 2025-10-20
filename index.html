@@ -16,44 +16,40 @@
   <!-- HEADER -->
   <header class="site-header">
     <div class="container header-inner">
-      <div class="logo">
-        <img src="assets/logo.png" alt="ВапСтепГлобал" />
+
+     <div class="logo3">
+            <img src="assets/logo.png" alt="ВанСтен">
+        </div>
+
+        <div class="phone22">+375-25-607-14-11</div>
+
+        <!-- Социальные иконки -->
         <div class="social-icons">
-      <a href="https://" target="_blank" class="icons">
-        <img src="assets/tg.png" alt="Telegram">
-      </a>
-      <a href="https://www.facebook.com/" target="_blank" class="icons">
-        <img src="assets/fb.png" alt="Facebook">
-      </a>
-      <a href="https://www.instagram.com/" target="_blank" class="icons">
-        <img src="assets/inst.png" alt="Instagram">
-      </a>
-      <a href="https://vk.com/" target="_blank" class="icons">
-        <img src="assets/vk.png" alt="VKontakte">
-      </div>
-      <nav class="main-nav">
-       
-      </nav>
-      <div class="header-cta">
-        <a class="btn btn-outline" href="#">Заказать звонок</a>
-      </div>
+            <a href="https://" target="_blank" class="icons">
+                <img src="assets/tg.png" alt="Telegram" width="32px">
+            </a>
+            <a href="https://www.facebook.com/" target="_blank" class="icons">
+                <img src="assets/fb.png" alt="Facebook" width="32px">
+            </a>
+            <a href="https://www.instagram.com/" target="_blank" class="icons">
+                <img src="assets/inst.png" alt="Instagram" width="32px">
+            </a>
+            <a href="https://vk.com/" target="_blank" class="icons">
+                <img src="assets/vk.png" alt="VKontakte" width="32px">
+            </a>
+        </div>
+
+        <!-- Кнопка заказа -->
+        <div class="header-cta">
+            <a class="btn btn-outline" href="#">Заказать звонок</a>
+        </div>
     </div>
+
+ 
   </header>
 
   <!-- HERO -->
-  <section class="hero">
-    <div class="container hero-inner">
-
-       <!-- <svg class="arrow-svg" width="24" height="24" viewBox="0 0 24 24">
-            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/>
-        </svg>-->
-      <div class="hero-text">
-        <h1>Добавки,</h1>
-        <h2>созданные на стыке науки и природы</h2>
-       
-      </div>
-    </div>
-  </section>
+  <section class="hero"></section>
 
   <!-- STATS / QUICK FACTS -->
   <section class="stats">
@@ -366,9 +362,9 @@
             </div>    
             <div class="name-list">
                 <ul>
-                    <li>Контакты</li>
-                    <li>Юридические сведения</li>
-                    <li>Наш адрес:</li>
+                    <li class="contacti">Контакты</li>
+                    <li class="ur">Юридические сведения</li>
+                    <li class="con">Наш адрес:</li>
                 </ul>
                 
             </div>
@@ -390,9 +386,40 @@
                         вблизи аг. Будагово <br>
                     </li>
                 </ul>
-            </div>
-        </div>
+            </div> 
         
+        <div class="social-icons1">
+          <a href="https://www.facebook.com/" target="_blank" class="icons">
+        <img src="assets/fb.png" alt="Facebook" width="32px">
+      </a>
+      <a href="https://www.instagram.com/" target="_blank" class="icons">
+        <img src="assets/inst.png" alt="Instagram" width="32px">
+      </a>
+      <a href="https://vk.com/" target="_blank" class="icons">
+        <img src="assets/vk.png" alt="VKontakte" width="32px">
+      </a>
+      <a href="https://" target="_blank" class="icons">
+        <img src="assets/tg.png" alt="Telegram" width="32px">
+      </a>
+      <a href="https://" target="_blank" class="icons">
+        <img src="assets/viber.png" alt="Viber" width="32px">
+      </a>
+      </div>
+      <div class="buttonlast">
+      <a class="btn btn-outline1" href="#">Заказать звонок</a>
+       
+        </div>
+
+    <div class="linee">
+      <hr class="line">
+        </div> 
+
+        <div class="end">
+          <p>Политика конфиденциальности<br><br>
+          Политика обработки файлов cookie<br><br>
+        © 2025 ООО "ВапСтепГлобал"</p>
+        </div>
+            </div>  
     </footer>
 
 
@@ -405,31 +432,29 @@
                 this.nextBtn = document.querySelector('.next-btn');
                 
                 this.currentIndex = 0;
-                this.cardsToShow = 3; // Всегда показываем 3 сертификата
+                this.cardsToShow = 3; 
                 this.totalCards = this.cards.length;
                 
                 this.init();
             }
             
             init() {
-                // Навигация
+
                 this.prevBtn.addEventListener('click', () => this.prev());
                 this.nextBtn.addEventListener('click', () => this.next());
-                
-                // Автопрокрутка
+
                 this.startAutoPlay();
-                
-                // Пауза при наведении
+ 
                 this.carousel.addEventListener('mouseenter', () => this.stopAutoPlay());
                 this.carousel.addEventListener('mouseleave', () => this.startAutoPlay());
                 
-                // Обновляем состояние кнопок
+  
                 this.updateButtons();
             }
             
             updateCarousel() {
-                // Вычисляем смещение для показа трех сертификатов
-                const cardWidth = 100 / this.cardsToShow; // % ширины для каждого сертификата
+           
+                const cardWidth = 100 / this.cardsToShow; 
                 const translateX = -this.currentIndex * cardWidth;
                 this.carousel.style.transform = `translateX(${translateX}%)`;
                 
@@ -437,7 +462,7 @@
             }
             
             next() {
-                // Переходим к следующему сертификату, но не дальше чем можно показать 3
+
                 if (this.currentIndex < this.totalCards - this.cardsToShow) {
                     this.currentIndex++;
                     this.updateCarousel();
@@ -452,7 +477,7 @@
             }
             
             updateButtons() {
-                // Отключаем кнопки когда достигнуты границы
+             
                 this.prevBtn.disabled = this.currentIndex === 0;
                 this.nextBtn.disabled = this.currentIndex >= this.totalCards - this.cardsToShow;
             }
@@ -463,7 +488,7 @@
                     if (this.currentIndex < this.totalCards - this.cardsToShow) {
                         this.next();
                     } else {
-                        // Возврат к началу
+                    
                         this.currentIndex = 0;
                         this.updateCarousel();
                     }
@@ -478,7 +503,7 @@
             }
         }
         
-        // Инициализация карусели после загрузки DOM
+        
         document.addEventListener('DOMContentLoaded', () => {
           new CertificatesCarousel();
         });
@@ -500,6 +525,86 @@
                 });
             });
         });
+
+          
+        
+  const hero = document.querySelector('.hero');
+
+
+  // Массив изображений для слайдера (укажи свои пути)
+  const images = [
+    'assets/hero1.png',
+    'assets/fon2.png',
+    'assets/fon3.png'
+  ];
+
+  let current = 0;
+
+  function changeBackground() {
+    hero.style.backgroundImage = `url(${images[current]})`;
+    current = (current + 1) % images.length;
+  }
+
+  changeBackground(); // сразу показать первое изображение
+  setInterval(changeBackground, 2000); // смена каждые 2 секунды
+
+
+// Показ формы через 5 секунд
+        setTimeout(() => {
+            callbackModal.style.display = 'flex';
+        }, 5000);
+
+        // Проверяем, приняты ли уже куки
+        if (!localStorage.getItem('cookiesAccepted')) {
+            // Показываем окно куки через 2 секунды после загрузки страницы
+            setTimeout(() => {
+                cookieConsent.style.display = 'block';
+            }, 2000);
+        }
+
+        // Обработчики для формы обратного звонка
+        closeCallbackBtn.addEventListener('click', () => {
+            callbackModal.style.display = 'none';
+        });
+
+        // Закрытие формы при клике вне её области
+        window.addEventListener('click', (e) => {
+            if (e.target === callbackModal) {
+                callbackModal.style.display = 'none';
+            }
+        });
+
+        // Обработка отправки формы
+        callbackForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Получаем данные формы
+            const formData = new FormData(callbackForm);
+            const name = formData.get('name');
+            const phone = formData.get('phone');
+            const message = formData.get('message');
+            
+            // В реальном приложении здесь был бы код для отправки данных на сервер
+            alert(`Спасибо, ${name}! Мы свяжемся с вами по номеру ${phone} в ближайшее время.`);
+            
+            // Закрываем форму
+            callbackModal.style.display = 'none';
+            
+            // Очищаем форму
+            callbackForm.reset();
+        });
+
+        // Обработчики для окна куки
+        acceptCookiesBtn.addEventListener('click', () => {
+            localStorage.setItem('cookiesAccepted', 'true');
+            cookieConsent.style.display = 'none';
+        });
+
+        moreCookiesBtn.addEventListener('click', () => {
+            alert('Здесь будет информация о политике использования файлов cookie.');
+        });
+
+
     </script>
 
 </body>

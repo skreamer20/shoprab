@@ -39,11 +39,17 @@ body{
   box-shadow: 0 1px 0 rgba(0,0,0,0.04);
 }
 .header-inner{
-  display:flex;
-  align-items:center;
-  gap:20px;
-  height:140px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+display: flex;
+  gap: 20px;
 }
+
+.phone22 {
+  padding-left: 330px;
+}
+
 .logo img{height:47px; display: flex;}
 
 
@@ -57,6 +63,11 @@ body{
   font-weight:600;
   font-size:16px;
   align-items: center; 
+
+}
+
+.logo3 {
+  padding-top: 26px;
 }
 
 .btn:hover {
@@ -72,32 +83,16 @@ background-color: #E9B949;
 .btn-outline{color:black; background-color: var(--green); width: 285px; padding-left: 75px; font-weight: 300p;}
 
 /* HERO */
-.hero{
-  padding:44px 0 44px;
-  background:#fff;
-}
-.hero-inner{
-  display:flex;
-  align-items:center;
-  gap:36px;
-}
-
-.hero-text {
-    background-image: url(assets/hero1.png);
-   width: 1200px;
+.hero {
+    width: 1200px;
+    max-width: 1200px; /* можно подогнать под макет */
     height: 507px;
-    border-radius: 14px;
-}
-
-.hero-text h1 {
-    padding-top: 132px;
-    font-family: 'Playfair Display', serif;
-  font-weight:700;
-  font-size:56px;
-  line-height:1.05;
-  padding-left: 472px;
-}
-
+    margin: 0 auto; /* центрируем */
+    background-size: cover;
+    background-position: center;
+    transition: background-image 1s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
 .hero-text h2{
   font-family: 'Playfair Display', serif;
   font-weight:700;
@@ -113,12 +108,13 @@ background-color: #E9B949;
 }
 
 .social-icons{
-  width: 32px;
   height: 32px;
   display: flex;
+  flex-direction: row;
   gap: 20px;
   
 }
+
 
 /* STTRELKI */
 .arrow-svg {
@@ -131,6 +127,10 @@ background-color: #E9B949;
 }
 
 /* STATS */
+.stats {
+  margin-top: 40px;
+}
+
 .stats-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -820,7 +820,6 @@ border-radius: 12px;}
 }
 .name-list{
   margin-left: -55px;
-	padding-top: 50px;
 	display: flex;
 	justify-content: space-between;
 }
@@ -831,15 +830,27 @@ border-radius: 12px;}
 	list-style: none;
 }
 .list{
-	padding-top: 20px;
 	display: flex;
 	justify-content: space-between;
+  margin-top: -30px;
 }
 .list ul{
 	display: flex;
 	width: 100%;
 	justify-content: space-around;
 	list-style: none;
+}
+
+.contacti {
+  padding-left: 57px;
+}
+
+.ur {
+  padding-left: 130px;
+}
+
+.con {
+  padding-right: 160px;
 }
 
 .logo1 {
@@ -861,7 +872,196 @@ border-radius: 12px;}
   width: auto;
   margin-top: 140px;
 }
+
+
+.social-icons1{
+  width: 32px;
+  display: flex;
+  padding-left: 120px;
+  gap: 24px;
+}
+
+.icons {
+flex-direction: row;
+}
+
+.btn-outline1{color:black; background-color: var(--green); width: 285px; padding-left: 75px; font-weight: 300p;}
+
+.buttonlast{
+  padding-left: 457px;
+}
+
+.line {
+  border: none;
+  border-top: 1px solid black;
+  width: 996px;
+  margin: 52px;
+}
+
+.linee{
+  display: flex;
+  justify-content: center;
+}
+
+.end {
+  text-align: center;
+}
+
+/* Всплывающая форма */
+        .callback-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
         
+        .callback-form {
+            background-color: white;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .callback-form h2 {
+            margin-bottom: 20px;
+            color: #2c5aa0;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .checkbox-group input {
+            margin-right: 10px;
+            margin-top: 3px;
+        }
+        
+        .form-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .submit-btn {
+            background-color: #2c5aa0;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            flex-grow: 1;
+            margin-right: 10px;
+        }
+        
+        .close-btn {
+            background-color: #f0f0f0;
+            color: #333;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            flex-grow: 1;
+            margin-left: 10px;
+        }
+        
+        /* Окно куки */
+        .cookie-consent {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #f9f9f9;
+            padding: 20px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+            display: none;
+        }
+        
+        .cookie-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .cookie-text {
+            flex-grow: 1;
+            margin-right: 20px;
+        }
+        
+        .cookie-text h3 {
+            margin-bottom: 5px;
+            color: #2c5aa0;
+        }
+        
+        .cookie-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .cookie-accept {
+            background-color: #2c5aa0;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .cookie-more {
+            background-color: transparent;
+            color: #2c5aa0;
+            border: 1px solid #2c5aa0;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+
         /* Адаптивность */
         @media (max-width: 1024px) {
             .footer-content {
