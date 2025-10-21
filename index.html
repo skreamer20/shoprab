@@ -39,9 +39,24 @@
             </a>
         </div>
 
+        <!-- Бургер -->
+<div class="burger" id="burgerMenu">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<!-- Мобильное меню -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">О компании</a>
+  <a href="#products">Продукция</a>
+  <a href="#contacts">Контакты</a>
+  <a href="#" id="openCallbackFormMobile">Заказать звонок</a>
+</div>
+
         <!-- Кнопка заказа -->
         <div class="header-cta">
-            <a href="#" class="btn btn-outline open-callback-dtn">Заказать звонок</a>
+            <a href="#" class="btn btn-outline open-callback-dtn" id="openCallbackForm">Заказать звонок</a>
         </div>
     </div>
 
@@ -85,7 +100,10 @@
             натуральных решений для животноводства</p>
       </div>
       <div class="about-image">
-        <img src="assets/about.png" alt="О компании" style="transform: rotate(90deg); width: 497px;"  />
+        <iframe width="590px" height="271px"  src="https://www.youtube.com/watch?v=kGU7ZMTNqfY" title="YouTube video player" frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+      </iframe>
       </div>
     </div>
   </section>
@@ -409,7 +427,7 @@
       </a>
       </div>
       <div class="buttonlast">
-      <a href="#"  class="btn btn-outline open-callback-btn">Заказать звонок</a>
+      <a href="#"  class="btn btn-outline open-callback-btn" id="openCallbackForm">Заказать звонок</a>
        
         </div>
 
@@ -428,23 +446,30 @@
     <!-- Всплывающая форма обратного звонка -->
 <div class="callback-modal" id="callbackModal">
   <div class="callback-form">
+    <!-- Кнопка закрытия -->
+      <button type="button" class="close-btn" id="closeCallbackForm">
+          <img src="assets/close.png" alt="Закрыть">
+      </button>
       <h2>Заказать обратный звонок</h2>
-      <form id="callbackForm">
-          <div class="formall">
+       <form id="callbackForm">
+
+
+            <div class="formall">
               <div class="phone-name">
                   <div class="form-group">
                       <input class="name" type="text" name="name" placeholder="Имя" required>
                   </div>
-                  <div class="form-group1">
+
+                  <div class="form-group">
                       <input class="phone" type="tel" name="phone" placeholder="Телефон" required>
-                  </div>
+                  </div><br>
               </div>
 
-              <div class="phone-name">
+                <div class="form-group"></div>
                   <div class="message1"><br>
                       <textarea name="message" placeholder="Сообщение" rows="4" class="message1"></textarea><br>
                   </div>
-              </div>
+                </div>
               
               <div class="phone-name">
                   <div class="checkbox-group">
@@ -459,15 +484,7 @@
           </div>
       </form>
 
-      <!-- Кнопка закрытия -->
-      <button type="button" class="close-btn" id="closeCallbackForm">
-          <img src="assets/close.png" alt="Закрыть">
-      </button>
-  </div>
-</div>  
-
-   
-
+     
   <!-- Окно куки -->
   <div class="cookie-consent" id="cookieConsent">
     <div class="cookie-content">
@@ -538,8 +555,8 @@
                 const phone = formData.get('phone');
                 
                
-                alert(`Спасибо, ${name}! Мы свяжемся с вами по номеру ${phone} в ближайшее время.`);
-                
+                alert(`Заявка успешно отправлена!`);
+                alert(`В ближайшее время мы Вам позвоним`);
                 
                 closeModal();
                 
@@ -688,6 +705,45 @@
         
         console.log("Скрипт загружен. Форма должна работать!");
 
+        document.addEventListener('DOMContentLoaded', function() {
+  // бургер
+  const burger = document.getElementById('burgerMenu');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+  });
+
+  // закрываем меню при клике по ссылке
+  document.querySelectorAll('.mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      burger.classList.remove('active');
+      mobileMenu.classList.remove('active');
+    });
+  });
+
+  // открытие формы при клике в мобильном меню
+  const modal = document.getElementById('callbackModal');
+  const openMobile = document.getElementById('openCallbackFormMobile');
+  const closeBtn = document.getElementById('closeCallbackForm');
+
+  openMobile.addEventListener('click', (e) => {
+    e.preventDefault();
+    modal.classList.add('active');
+    burger.classList.remove('active');
+    mobileMenu.classList.remove('active');
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.classList.remove('active');
+  });
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) modal.classList.remove('active');
+  });
+});
+          
   </script>
 </body>
 </html>
