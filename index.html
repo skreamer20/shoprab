@@ -41,7 +41,7 @@
 
         <!-- Кнопка заказа -->
         <div class="header-cta">
-            <a class="btn btn-outline" href="#">Заказать звонок</a>
+            <a href="#" class="btn btn-outline open-callback-dtn">Заказать звонок</a>
         </div>
     </div>
 
@@ -343,15 +343,18 @@
         <a class="btnn" href="#"><img src="assets/play.png">Контакты</a>
       </div>
       <form class="contact-form" action="#" method="post">
-        <input class="name" type="text" name="name" placeholder="Имя" required>
-        <input class="phone" type="tel" name="phone" placeholder="Телефон" required>
+        <input class="name228" type="text" name="name" placeholder="Имя" required>
+        <input class="phone228" type="tel" name="phone" placeholder="Телефон" required>
         <textarea name="message" placeholder="Сообщение" rows="4"></textarea><br>
         <input class="checkbox" type="checkbox" name="checkbox" placeholder="Я согласен">Я согласен (на) с политикой конфиденциальности
         <button>Получить консультацию</button>
       </form>
     </div>
   </section>
-    
+   
+
+
+
     <!-- Футер -->
     <footer>
         <div class="osn">
@@ -406,7 +409,7 @@
       </a>
       </div>
       <div class="buttonlast">
-      <a class="btn btn-outline1" href="#">Заказать звонок</a>
+      <a href="#"  class="btn btn-outline open-callback-btn">Заказать звонок</a>
        
         </div>
 
@@ -422,8 +425,129 @@
             </div>  
     </footer>
 
+    <!-- Всплывающая форма обратного звонка -->
+<div class="callback-modal" id="callbackModal">
+  <div class="callback-form">
+      <h2>Заказать обратный звонок</h2>
+      <form id="callbackForm">
+          <div class="formall">
+              <div class="phone-name">
+                  <div class="form-group">
+                      <input class="name" type="text" name="name" placeholder="Имя" required>
+                  </div>
+                  <div class="form-group1">
+                      <input class="phone" type="tel" name="phone" placeholder="Телефон" required>
+                  </div>
+              </div>
 
+              <div class="phone-name">
+                  <div class="message1"><br>
+                      <textarea name="message" placeholder="Сообщение" rows="4" class="message1"></textarea><br>
+                  </div>
+              </div>
+              
+              <div class="phone-name">
+                  <div class="checkbox-group">
+                      <input class="checkbox" type="checkbox" id="privacyCheckbox" name="privacy" required>
+                      <label for="privacyCheckbox">Я согласен (на) с политикой конфиденциальности</label>
+                  </div>
+              </div>
+
+              <div class="phone-name">
+                  <button type="submit" class="phone-name111">Получить консультацию</button>
+              </div>
+          </div>
+      </form>
+
+      <!-- Кнопка закрытия -->
+      <button type="button" class="close-btn" id="closeCallbackForm">
+          <img src="assets/close.png" alt="Закрыть">
+      </button>
+  </div>
+</div>  
+
+   
+
+  <!-- Окно куки -->
+  <div class="cookie-consent" id="cookieConsent">
+    <div class="cookie-content">
+      <div class="cookie-text">
+        <p>На этом сайте используются файлы cookie. Продолжая просмотр сайта, вы разрешаете их использование.</p>
+        <p><a href="#" style="color: #000000;">Подробнее</a></p>
+      </div>
+      <div class="cookie-buttons">
+        <button class="cookie-accept" id="acceptCookies">Закрыть</button>
+      </div>
+    </div>
+  </div>
 <script>
+
+
+        const modal = document.getElementById('callbackModal');
+        const openBtnHeader = document.getElementById('openCallbackForm');
+        const openBtnFooter = document.getElementById('openCallbackFormFooter');
+        const closeBtn = document.getElementById('closeCallbackForm');
+        const form = document.getElementById('callbackForm');
+        const cookieConsent = document.getElementById('cookieConsent');
+        const acceptCookiesBtn = document.getElementById('acceptCookies');
+
+        function openModal() {
+            modal.style.display = 'flex';
+        }
+        
+   
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+        
+     
+        if (openBtnHeader) {
+            openBtnHeader.addEventListener('click', function(e) {
+                e.preventDefault();
+                openModal();
+            });
+        }
+        
+        if (openBtnFooter) {
+            openBtnFooter.addEventListener('click', function(e) {
+                e.preventDefault();
+                openModal();
+            });
+        }
+        
+   
+        if (closeBtn) {
+            closeBtn.addEventListener('click', closeModal);
+        }
+        
+     
+        window.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+        
+    
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                
+                const formData = new FormData(form);
+                const name = formData.get('name');
+                const phone = formData.get('phone');
+                
+               
+                alert(`Спасибо, ${name}! Мы свяжемся с вами по номеру ${phone} в ближайшее время.`);
+                
+                
+                closeModal();
+                
+                
+                form.reset();
+            });
+        }
+
        class CertificatesCarousel {
             constructor() {
                 this.carousel = document.querySelector('.carousel-track');
@@ -531,7 +655,6 @@
   const hero = document.querySelector('.hero');
 
 
-  // Массив изображений для слайдера (укажи свои пути)
   const images = [
     'assets/hero1.png',
     'assets/fon2.png',
@@ -546,66 +669,25 @@
   }
 
   changeBackground(); // сразу показать первое изображение
-  setInterval(changeBackground, 2000); // смена каждые 2 секунды
+  setInterval(changeBackground, 2000); // смена кд 2 секунды
 
-
-// Показ формы через 5 секунд
-        setTimeout(() => {
-            callbackModal.style.display = 'flex';
-        }, 5000);
-
-        // Проверяем, приняты ли уже куки
-        if (!localStorage.getItem('cookiesAccepted')) {
-            // Показываем окно куки через 2 секунды после загрузки страницы
-            setTimeout(() => {
-                cookieConsent.style.display = 'block';
-            }, 2000);
-        }
-
-        // Обработчики для формы обратного звонка
-        closeCallbackBtn.addEventListener('click', () => {
-            callbackModal.style.display = 'none';
-        });
-
-        // Закрытие формы при клике вне её области
-        window.addEventListener('click', (e) => {
-            if (e.target === callbackModal) {
-                callbackModal.style.display = 'none';
+  // Обработчик для окна куки
+        if (cookieConsent && acceptCookiesBtn) {
+            acceptCookiesBtn.addEventListener('click', function() {
+                localStorage.setItem('cookiesAccepted', 'true');
+                cookieConsent.style.display = 'none';
+            });
+            
+      
+            if (!localStorage.getItem('cookiesAccepted')) {
+                setTimeout(function() {
+                    cookieConsent.style.display = 'block';
+                }, 2000);
             }
-        });
+        }
+        
+        console.log("Скрипт загружен. Форма должна работать!");
 
-        // Обработка отправки формы
-        callbackForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // Получаем данные формы
-            const formData = new FormData(callbackForm);
-            const name = formData.get('name');
-            const phone = formData.get('phone');
-            const message = formData.get('message');
-            
-            // В реальном приложении здесь был бы код для отправки данных на сервер
-            alert(`Спасибо, ${name}! Мы свяжемся с вами по номеру ${phone} в ближайшее время.`);
-            
-            // Закрываем форму
-            callbackModal.style.display = 'none';
-            
-            // Очищаем форму
-            callbackForm.reset();
-        });
-
-        // Обработчики для окна куки
-        acceptCookiesBtn.addEventListener('click', () => {
-            localStorage.setItem('cookiesAccepted', 'true');
-            cookieConsent.style.display = 'none';
-        });
-
-        moreCookiesBtn.addEventListener('click', () => {
-            alert('Здесь будет информация о политике использования файлов cookie.');
-        });
-
-
-    </script>
-
+  </script>
 </body>
 </html>
